@@ -70,7 +70,7 @@ class ZJEmoji{
     
     
     
-    static func getAttributedText(message:String) -> NSMutableAttributedString{
+    static func getAttributedText(_ message:String) -> NSMutableAttributedString{
         var isContain:Bool = true;
         let mutableAttributedString = NSMutableAttributedString();
         var tempMessage = message;
@@ -79,47 +79,47 @@ class ZJEmoji{
         //判断当前字符串是否还有表情的标志。
         while isContain{
             
-            let range = tempMessage.rangeOfString(
-                "\\[[^\\[^\\]]+\\]",
-                options: NSStringCompareOptions.RegularExpressionSearch,
+            let range = tempMessage.range(
+                of: "\\[[^\\[^\\]]+\\]",
+                options: NSString.CompareOptions.regularExpression,
                 range: nil,
                 locale: nil
             );
             
-            if (range != nil && (range!.startIndex != range!.endIndex)){
+            if (range != nil && (range!.lowerBound != range!.upperBound)){
                 
-                let leftStr = tempMessage.substringToIndex(range!.startIndex);
-                let midStr = tempMessage.substringWithRange(range!);
-                let rightStr = tempMessage.substringFromIndex(range!.endIndex);
+                let leftStr = tempMessage.substring(to: range!.lowerBound);
+                let midStr = tempMessage.substring(with: range!);
+                let rightStr = tempMessage.substring(from: range!.upperBound);
                 
                 tempMessage = rightStr;
                 
                 let imageUrl = emojiMap[midStr];
                 //能找到图片资源
                 if(imageUrl != nil){
-                    mutableAttributedString.insertAttributedString(
+                    mutableAttributedString.insert(
                         NSAttributedString(string: leftStr),
-                        atIndex: mutableAttributedString.string.characters.count
+                        at: mutableAttributedString.string.characters.count
                     );
                     
                     let textAttachment = ZJTextAttachment();
                     textAttachment.image = UIImage(named: imageUrl!);
                     let attributedString = NSAttributedString(attachment: textAttachment);
-                    mutableAttributedString.insertAttributedString(
+                    mutableAttributedString.insert(
                         attributedString,
-                        atIndex: mutableAttributedString.string.characters.count
+                        at: mutableAttributedString.string.characters.count
                     );
                 }else{
-                    mutableAttributedString.insertAttributedString(
+                    mutableAttributedString.insert(
                         NSAttributedString(string: leftStr + midStr),
-                        atIndex: mutableAttributedString.string.characters.count
+                        at: mutableAttributedString.string.characters.count
                     )
                 }
                 
             }else{
-                mutableAttributedString.insertAttributedString(
+                mutableAttributedString.insert(
                     NSAttributedString(string: tempMessage),
-                    atIndex: mutableAttributedString.string.characters.count
+                    at: mutableAttributedString.string.characters.count
                 )
                 isContain = false;
             }

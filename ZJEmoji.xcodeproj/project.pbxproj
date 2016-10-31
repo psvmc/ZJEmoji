@@ -326,7 +326,8 @@
 				TargetAttributes = {
 					3FCC3FA41C4F2C7C0029FBB0 = {
 						CreatedOnToolsVersion = 7.2;
-						DevelopmentTeam = 79EMNXB6R3;
+						DevelopmentTeam = 6U6NNJD6PX;
+						LastSwiftMigration = 0800;
 					};
 				};
 			};
@@ -545,11 +546,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DEVELOPMENT_TEAM = 6U6NNJD6PX;
 				INFOPLIST_FILE = ZJEmoji/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = cn.psvmc.ZJEmoji;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -558,11 +561,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DEVELOPMENT_TEAM = 6U6NNJD6PX;
 				INFOPLIST_FILE = ZJEmoji/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = cn.psvmc.ZJEmoji;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};

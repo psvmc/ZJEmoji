@@ -15,7 +15,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         let emojiStr = ZJEmoji.getAttributedText("[哈哈]猪头[呵呵][害羞][没什么事]开心[哈哈]")
         emojiLabel.attributedText = emojiStr;
     }
