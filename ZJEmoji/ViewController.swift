@@ -9,7 +9,7 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
     @IBOutlet weak var emojiLabel: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,11 +19,11 @@ class ViewController: UIViewController {
         let emojiStr = ZJEmoji.getAttributedText("[哈哈]猪头[呵呵][害羞][没什么事]开心[哈哈]")
         emojiLabel.attributedText = emojiStr;
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-
-
+    
+    
 }
 

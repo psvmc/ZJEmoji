@@ -87,10 +87,9 @@ class ZJEmoji{
             );
             
             if (range != nil && (range!.lowerBound != range!.upperBound)){
-                
-                let leftStr = tempMessage.substring(to: range!.lowerBound);
-                let midStr = tempMessage.substring(with: range!);
-                let rightStr = tempMessage.substring(from: range!.upperBound);
+                let leftStr = String(tempMessage[tempMessage.startIndex..<range!.lowerBound]);
+                let midStr = String(tempMessage[range!]);
+                let rightStr = String(tempMessage[range!.upperBound..<tempMessage.endIndex]);
                 
                 tempMessage = rightStr;
                 
@@ -99,7 +98,7 @@ class ZJEmoji{
                 if(imageUrl != nil){
                     mutableAttributedString.insert(
                         NSAttributedString(string: leftStr),
-                        at: mutableAttributedString.string.characters.count
+                        at: mutableAttributedString.string.endIndex.encodedOffset
                     );
                     
                     let textAttachment = ZJTextAttachment();
@@ -107,19 +106,19 @@ class ZJEmoji{
                     let attributedString = NSAttributedString(attachment: textAttachment);
                     mutableAttributedString.insert(
                         attributedString,
-                        at: mutableAttributedString.string.characters.count
+                        at: mutableAttributedString.string.endIndex.encodedOffset
                     );
                 }else{
                     mutableAttributedString.insert(
                         NSAttributedString(string: leftStr + midStr),
-                        at: mutableAttributedString.string.characters.count
+                        at: mutableAttributedString.string.endIndex.encodedOffset
                     )
                 }
                 
             }else{
                 mutableAttributedString.insert(
                     NSAttributedString(string: tempMessage),
-                    at: mutableAttributedString.string.characters.count
+                    at: mutableAttributedString.string.endIndex.encodedOffset
                 )
                 isContain = false;
             }
